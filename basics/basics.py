@@ -32,3 +32,20 @@ different_status = dataFrame['STATUS'].unique()
 different_dealsizes = dataFrame['DEALSIZE'].unique()
 print("giá trị khác nhau trong status là: ", different_status)
 print("giá trị khác nhau trong dealsize là: ", different_dealsizes)
+#Lọc dữ liệu 
+#Lọc đơn hàng có sales lớn hơn 5000
+products = dataFrame.loc[dataFrame['SALES'] > 5000]
+print("đơn hàng có lượt sales lớn hơn 5000 là: ", products)
+#Lọc ra các đơn hàng thuộc quốc gia USA và có DEALSIZE là Large. Sắp xếp kết quả theo SALES giảm dần và hiển thị 10 dòng đầu tiên.
+results = dataFrame.loc[(dataFrame['COUNTRY'] == 'USA') & (dataFrame['DEALSIZE'] == 'Large')]
+print("kết quả trả về là: ", results)
+#Lọc ra các đơn hàng có Profit âm (lỗ). Các đơn hàng này thường rơi vào STATUS nào? DEALSIZE nào? (Gợi ý: dùng value_counts())
+filter_profits = dataFrame.loc[dataFrame['Profit'] < 0, ['Profit', 'STATUS', 'DEALSIZE']].value_counts()
+print("kết quả là: ", filter_profits)
+#Lọc ra các đơn hàng có mức giảm giá (Discount) từ 0.3 trở lên. Doanh số (SALES) trung bình của nhóm này là bao nhiêu, so với doanh số trung bình toàn bộ dữ liệu?
+discounts = dataFrame.loc[dataFrame['Discount'] >= 0.3]
+print("đơn hàng có mức giảm giá từ 0.3 trở lên là: ", discounts)
+sales_discount = discounts['SALES'].mean()
+average_sales = dataFrame['SALES'].mean()
+print("đơn hàng có mức giảm giá từ 0.3 trở lên là: ", sales_discount)
+print("doanh số trung bình của toàn bộ dữ liệu là: ", average_sales); 
