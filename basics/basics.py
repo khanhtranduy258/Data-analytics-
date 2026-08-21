@@ -49,3 +49,7 @@ sales_discount = discounts['SALES'].mean()
 average_sales = dataFrame['SALES'].mean()
 print("đơn hàng có mức giảm giá từ 0.3 trở lên là: ", sales_discount)
 print("doanh số trung bình của toàn bộ dữ liệu là: ", average_sales); 
+#tạo cột và biến đổi dữ liệu 
+#Từ cột ORDERDATE, tạo thêm 3 cột mới: ORDER_YEAR, ORDER_MONTH, ORDER_QUARTER chứa năm, tháng, quý của ngày đặt hàng.
+new_columns = ['ORDER_YEAR', 'ORDER_MONTH', 'ORDER_QUARTER']
+print("data mới là: ", dataFrame['ORDERDATE'])
